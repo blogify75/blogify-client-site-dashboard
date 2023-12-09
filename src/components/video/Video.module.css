@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Carrois+Gothic&display=swap");
+.main {
+  width: 100%;
+}
+
+.title {
+  width: 100%;
+  height: 9.5vh;
+  border-bottom: 1px solid gray;
+}
+
+.title button {
+  width: 100px;
+  height: 40px;
+  background: none;
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  font-family: "Oswald", sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 79vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.detail {
+  width: 100%;
+  height: auto;
+}
+
+.footer {
+  width: 100%;
+  height: 7vh;
+}
+
+.allBlogs {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.allBlogs_title {
+  width: 100%;
+  height: 20px;
+  margin-bottom: 20px;
+  font-family: "Oswald", sans-serif;
+}
+
+.allBlogs_title p {
+  margin: 0;
+  padding: 0;
+}
+
+.allBlogs_container {
+  width: 100%;
+  height: 270px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  margin-bottom: 10vh;
+  font-family: "Carrois Gothic", sans-serif;
+  
+}
+
+.allBlogs_Detail_title {
+  width: 100%;
+  height: 30px;
+  margin-bottom: 20px;
+}
+.allBlogs_Detail_notifier {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+}
+.allBlogs_Detail_Detail {
+  width: 100%;
+  height: 120px;
+  margin-bottom: 20px;
+}
+
+
+
+.allBlogs_modifications{
+  display: none;
+}
+
+.allBlogs_detail:hover .allBlogs_modifications{
+  display: block;
+}
+

@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+.main{
+    width: 100%;
+}
+
+
+.title{
+    width: 100%;
+    height: 9.5vh;
+    border-bottom: 1px solid black;
+    font-family: 'Oswald', sans-serif;
+    color: gray;
+}
+
+.title p{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 100%;
+    height: 96vh;
+    padding-right: 10px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.blog_title{
+    width: 80%;
+    height: 6.5vh;
+    border: 2px solid rgba(35, 127, 234, 0.50);
+    margin-bottom: 10px;
+}
+
+
+
+.blog_title input{
+    width: 99%;
+    height: 7vh;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 3vw;
+    color: #A4A2A2;
+}
+
+
+.blogger_name{
+    width: 80%;
+}
+.blogger_sub_title{
+    width: 80%;
+}
+.blogger_name input {
+    width: 30%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 5px 0px;
+}
+.blogger_sub_title input {
+    width: 70%;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid gray;
+    padding: 5px 0px;
+}
+
+.blog_image{
+    margin-top: 20px;
+    width: 100%;
+    background: #F2F2F2;
+    height: 15vh;
+}
+
+.blog_image_title{
+    width: 100%;
+    height: 5vh;
+    border-bottom: 1px solid gray;
+}
+
+.blog_image_title_container{
+    width: 80%;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    font-size: .9vw;
+    font-weight: bold;
+}
+
+.blog_image_Button{
+    width: 80%;
+    height: 4vh;
+
+}
+
+.blog_image_Button_container{
+    width: 50%;
+    height: 100%;
+}
+
+
+/* image button */
+
+.blog_image_Button_container {
+   margin-bottom: 100px;
+  }
+
+
+  .blog_description{
+    width: 100%;
+  }
+
+  .blog_footer{
+    width: 100%;
+    height: 10vh;
+  }
+
+  .blog_footer button{
+    width: 100px;
+    height: 40px;
+    background: none;
+    border: none;
+    background-color: green;
+    color: white;
+    font-size: 17px;
+    font-family: 'Oswald', sans-serif;
+    margin-right: 10px;
+  }
+  
+  
