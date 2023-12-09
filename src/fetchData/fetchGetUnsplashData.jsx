@@ -1,5 +1,5 @@
 import axios from "axios";
-const apiKey = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
+const apiKey = import.meta.env;
 
 export const fetchGetUnsplashData = async (search) => {
     console.log(search)
