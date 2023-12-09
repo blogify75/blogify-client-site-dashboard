@@ -5,7 +5,7 @@ import Blog from './components/blog/Blog'
 import AddBlog from './components/blog/addBlog/AddBlog'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import UpdateBlog from './components/blog/updateBlog/updateBlog'
+import UpdateBlog from './components/blog/updateBlog/UpdateBlog'
 import DetailBlog from './components/blog/detailBlog/DetailBlog'
 import Product from './components/product/Product'
 import AddProduct from './components/product/addProduct/AddProduct'
@@ -26,7 +26,7 @@ function App() {
           <Route path='/' element={<Dashboard/>}>
               <Route path='' element={<Blog/>} />
               <Route path='dashboard/addBlog' element={<AddBlog/>} />
-              {/* <Route path='dashboard/updateBlog/:id' element={<UpdateBlog/>} /> */}
+              <Route path='dashboard/updateBlog/:id' element={<UpdateBlog/>} />
               <Route path='dashboard/detailBlog/:id' element={<DetailBlog/>} />
 
               <Route path='dashboard/product' element={<Product/>} />
