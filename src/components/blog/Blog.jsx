@@ -26,7 +26,7 @@ const Blog = () => {
 
   const [blogData, refetch, isLoading] = useBlogData();
   const allBlogs = blogData?.data?.data?.data;
-
+  
 
   const handleRoute = (id) => {
    navigate(`/dashboard/updateBlog/${id}`)

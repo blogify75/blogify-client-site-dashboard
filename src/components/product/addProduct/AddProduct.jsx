@@ -9,6 +9,8 @@ const AddProduct = () => {
     const editor = useRef(null);
 	const [content, setContent] = useState('');
     const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+    console.log(category)
     const [imgHolder, setImgHolder] = useState('');
   
     const date = new Date();
@@ -26,10 +28,13 @@ const AddProduct = () => {
             email: 'demo@gmail.com',
             name: e.target.name.value,
             affiliateLink:e.target.affiliateLink.value,
+            categories: category,
             date: `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`,
         };
+        
+        console.log(postData)
 
-
+        
         if(imgHolder){  
                 if(description){
                     await fetchPostProductData(postData).then(res => {
@@ -65,6 +70,17 @@ const AddProduct = () => {
                     <div className={`${addProduct.blogger_name} m_auto`}>
                         <input placeholder='your name' name='name' type="text" required />
                         <input style={{marginLeft:'20px'}} placeholder='affiliate-link' name='affiliateLink' type="text" required />
+                        <select style={{marginLeft:'20px'}} type="text" required 
+                        onChange={(e) => setCategory(e.target.value)}
+                        >
+                            <option value="">select from below</option>
+                            <option value="personalCare">Personal Care</option>
+                            <option value="beautyAndFashion">Beauty & Fashion</option>
+                            <option value="petLife">Pet Life</option>
+                            <option value="kidsProducts">Kids Products</option>
+                            <option value="random">Random</option>
+                        </select>
+                        
                     </div>
                     <div className={`${addProduct.blog_image}`}>
                         <div className={`${addProduct.blog_image_title}`}>

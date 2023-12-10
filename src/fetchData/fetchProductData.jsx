@@ -25,6 +25,7 @@ export const fetchPostProductData = async (productDataContainer) => {
 
         return productData;
     } catch (error) {
+        
         console.log(error);
      }
 }

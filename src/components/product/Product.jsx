@@ -22,6 +22,7 @@ const Product = () => {
     const [productData, refetch, isLoading] = useProductData();
     const allBlogs =productData?.data?.data?.data;
     
+    
     console.log(allBlogs)
   
   
