@@ -109,7 +109,7 @@ const Ragistration = () => {
                                     <img onClick={async() => {
                                       await signInWithGoogle().then(res => {
                                             if(res){
-                                                navigate('/dashboard');
+                                                navigate('/');
                                                 toast.success('successfully logged in with google')  
                                             }
                                         })         

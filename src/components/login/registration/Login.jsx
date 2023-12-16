@@ -4,14 +4,15 @@ import google from '../../../images/google-icon.png'
 import facebook from '../../../images/facebook-circle.png'
 import insta from '../../../images/instagram.png'
 import { useNavigate } from 'react-router-dom';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase/firebase.init';
 import { useEffect, useState} from 'react';
 import { toast } from 'react-toastify';
 
 
 const Login = () => {
-
+    const [user] = useAuthState(auth)
+    console.log(user?.email)
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
     const [emailReset, setEmailReset] = useState('');
 
@@ -67,6 +68,15 @@ const Login = () => {
            </div>
             <div className={`${registration.two} `}>
                 <p onClick={() => navigate('/signup')} className={registration.signInUp} style={{position:'absolute', top:'10px', right:'30px'}}>SIGN UP</p>
+                { user?.email &&
+                    <p onClick={() => {
+                        if(user?.email === import.meta.env.VITE_ADMIN_EMAIL){
+                            navigate('/dashboard')
+                        }else{
+                            toast.error('sorry you are not admin')
+                        }
+                    }} className={registration.signInUp} style={{position:'absolute', top:'10px', right:'150px'}}>DASHBOARD</p>
+                }
                 <p style={{position:'absolute', top:'10px', left:'0', color:'red', fontStyle:'italic'}}>{errorHolder ? errorHolder : ''}</p>
 
             
@@ -111,7 +121,7 @@ const Login = () => {
                                 <img onClick={async() => {
                                       await signInWithGoogle().then(res => {
                                             if(res){
-                                                navigate('/dashboard');
+                                                
                                                 toast.success('successfully logged in with google')  
                                             }
                                         })         

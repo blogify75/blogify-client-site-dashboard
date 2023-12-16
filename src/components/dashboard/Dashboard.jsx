@@ -4,7 +4,7 @@ import blogify from '../../images/blogify.png';
 import { useEffect } from 'react';
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import auth from '../../firebase/firebase.init';
-import { toast } from 'react-toastify';
+
 const Dashboard = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
@@ -17,7 +17,6 @@ const Dashboard = () => {
     if(!user?.email || user?.emailVerified === false){
         if(user?.email !==  import.meta.env.VITE_ADMIN_EMAIL){
             navigate('/');
-            toast.error('sorry! you are not admin.only admin has access!')
         }
     }
    },[user?.email, user?.emailVerified, navigate])
