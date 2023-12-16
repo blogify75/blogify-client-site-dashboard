@@ -4,6 +4,7 @@ import blogify from '../../images/blogify.png';
 import { useEffect } from 'react';
 import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
 import auth from '../../firebase/firebase.init';
+import { toast } from 'react-toastify';
 
 const Dashboard = () => {
     const [user] = useAuthState(auth);
@@ -11,18 +12,20 @@ const Dashboard = () => {
     const [signOut] = useSignOut(auth);
     console.log(user?.emailVerified)
    
+   
 
    useEffect(() => {
-    if(!user?.email){
-        if(user?.email !==  import.meta.env.VITE_ADMIN_EMAIL){
-            navigate('/');
-        }
+    if(!user?.email || !user?.emailVerified){
+       navigate('/');
     }
 
-    if(!user?.emailVerified){
+    if(user?.email !==  import.meta.env.VITE_ADMIN_EMAIL){
+        toast.error('only admin has access to deshboard')
         navigate('/');
     }
    },[user?.email, user?.emailVerified, navigate]);
+
+    
 
     return (
         <div className={`${dash.main}`}>
