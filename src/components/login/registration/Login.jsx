@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
     const [user] = useAuthState(auth)
+ 
     console.log(user?.email)
     const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
     const [emailReset, setEmailReset] = useState('');
@@ -39,11 +40,10 @@ const Login = () => {
         const password = e.target.password.value;
 
        
-            if(email === 'blogify75@gmail.com'){
+            if(email === import.meta.env.VITE_ADMIN_EMAIL){
                 await signInWithEmailAndPassword(email, password)
                     .then(res => {
                     if(res){
-                        console.log(res);
                         navigate('/dashboard')
                         toast.success('successfully signed in')
                     }
@@ -59,6 +59,8 @@ const Login = () => {
         setErrorHolder(error?.code)
     }
    },[error])
+
+
     
 
     return (
@@ -68,18 +70,10 @@ const Login = () => {
            </div>
             <div className={`${registration.two} `}>
                 <p onClick={() => navigate('/signup')} className={registration.signInUp} style={{position:'absolute', top:'10px', right:'30px'}}>SIGN UP</p>
-                { user?.email &&
-                    <p onClick={() => {
-                        if(user?.email === import.meta.env.VITE_ADMIN_EMAIL){
-                            navigate('/dashboard')
-                        }else{
-                            toast.error('sorry you are not admin')
-                        }
-                    }} className={registration.signInUp} style={{position:'absolute', top:'10px', right:'150px'}}>DASHBOARD</p>
-                }
+               
                 <p style={{position:'absolute', top:'10px', left:'0', color:'red', fontStyle:'italic'}}>{errorHolder ? errorHolder : ''}</p>
 
-            
+               
                 <div className={`${registration.twoContainer}`}>
                     <p className={`${registration.twoTitle} `}>SIGN IN</p>
                     <p className={`${registration.sub_title} `}>Create new account for sign in</p>
@@ -122,7 +116,11 @@ const Login = () => {
                                       await signInWithGoogle().then(res => {
                                             if(res){
                                                 
-                                                toast.success('successfully logged in with google')  
+                                                toast.success('successfully logged in with google');
+                                                setTimeout(() => {
+                                                    navigate('/dashboard');
+                                                    console.log('hello')
+                                                }, 6000) 
                                             }
                                         })         
                                     }} style={{width:'30px', height:'30px', cursor:'pointer'}} src={google} alt="" />

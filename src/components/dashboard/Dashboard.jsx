@@ -8,19 +8,21 @@ import auth from '../../firebase/firebase.init';
 const Dashboard = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate();
-
     const [signOut] = useSignOut(auth);
-    console.log(user?.email);
+    console.log(user?.emailVerified)
+   
 
-    
    useEffect(() => {
-    if(!user?.email || user?.emailVerified === false){
+    if(!user?.email){
         if(user?.email !==  import.meta.env.VITE_ADMIN_EMAIL){
             navigate('/');
         }
     }
-   },[user?.email, user?.emailVerified, navigate])
 
+    if(!user?.emailVerified){
+        navigate('/');
+    }
+   },[user?.email, user?.emailVerified, navigate]);
 
     return (
         <div className={`${dash.main}`}>

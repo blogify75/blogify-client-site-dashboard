@@ -61,10 +61,6 @@ const Ragistration = () => {
         }
       }
 
-      
-
-
-
     return (
         <div className={`${registration.main}`}>
             <div className={`${registration.one} flex`}>
@@ -109,8 +105,11 @@ const Ragistration = () => {
                                     <img onClick={async() => {
                                       await signInWithGoogle().then(res => {
                                             if(res){
-                                                navigate('/');
-                                                toast.success('successfully logged in with google')  
+                                                toast.success('successfully logged in with google');
+                                                setTimeout(() => {
+                                                    navigate('/dashboard');
+                                                    console.log('hello')
+                                                }, 6000) 
                                             }
                                         })         
                                     }} style={{width:'30px', height:'30px', cursor:'pointer'}} src={google} alt="" />
