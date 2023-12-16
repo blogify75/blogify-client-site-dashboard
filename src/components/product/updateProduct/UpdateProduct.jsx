@@ -26,6 +26,8 @@ const UpdateProduct = () => {
      const [price, setPrice] = useState('')
      const [name,setName] = useState('')
      const [affiliateLink, setAffiliateLink] = useState('');
+
+     console.log(imgHolder)
    
  
      const findProduct = allData?.find(f => {

@@ -1,9 +1,28 @@
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet,  useNavigate } from 'react-router-dom';
 import dash from './Dashboard.module.css';
 import blogify from '../../images/blogify.png';
+import { useEffect } from 'react';
+import { useAuthState, useSignOut } from 'react-firebase-hooks/auth';
+import auth from '../../firebase/firebase.init';
+import { toast } from 'react-toastify';
 const Dashboard = () => {
-    const location = useLocation();
-    console.log(location)
+    const [user] = useAuthState(auth);
+    const navigate = useNavigate();
+
+    const [signOut] = useSignOut(auth);
+    console.log(user?.email);
+
+    
+   useEffect(() => {
+    if(!user?.email || user?.emailVerified === false){
+        if(user?.email !==  import.meta.env.VITE_ADMIN_EMAIL){
+            navigate('/');
+            toast.error('sorry! you are not admin.only admin has access!')
+        }
+    }
+   },[user?.email, user?.emailVerified, navigate])
+
+
     return (
         <div className={`${dash.main}`}>
             <div className={`${dash.title} flex`}>
@@ -19,13 +38,13 @@ const Dashboard = () => {
                         <i 
                         style={{
                             fontSize:'20px', marginRight:'5px',   
-                            color:`${(location?.pathname === '/dashboard/addBlog' || location?.pathname === '/' || location?.pathname?.slice(0,21) === '/dashboard/updateBlog' || location?.pathname?.slice(0,21) === '/dashboard/detailBlog')  ? 'orange' : 'black'}`,}}  
+                            color:`${(location?.pathname === '/dashboard/addBlog' || location?.pathname === '/dashboard' || location?.pathname?.slice(0,21) === '/dashboard/updateBlog' || location?.pathname?.slice(0,21) === '/dashboard/detailBlog')  ? 'orange' : 'black'}`,}}  
                         className="uil uil-document-layout-right"></i>
                         <Link 
                         style={{
                             textDecoration:'none', 
-                            color:`${(location?.pathname === '/dashboard/addBlog' || location?.pathname === '/' || location?.pathname?.slice(0,21) === '/dashboard/updateBlog' || location?.pathname?.slice(0,21) === '/dashboard/detailBlog' )  ? 'orange' : 'black'}`,}} 
-                        to='/'>BLOGS</Link>
+                            color:`${(location?.pathname === '/dashboard/addBlog' || location?.pathname === '/dashboard' || location?.pathname?.slice(0,21) === '/dashboard/updateBlog' || location?.pathname?.slice(0,21) === '/dashboard/detailBlog' )  ? 'orange' : 'black'}`,}} 
+                        to='/dashboard'>BLOGS</Link>
                         </li>
                         <li>
                         <i style={{
@@ -52,6 +71,26 @@ const Dashboard = () => {
                             color:`${(location?.pathname === '/dashboard/addVideo' || location?.pathname === '/dashboard/video' || location?.pathname?.slice(0,22) === '/dashboard/updateVideo' || location?.pathname?.slice(0,22) === '/dashboard/detailVideo' )  ? 'orange' : 'black'}`,}} 
                             to='/dashboard/video'
                         >SOCIAL</Link>
+                        <hr />
+                        </li>
+                        <li>
+                        <i style={{
+                            fontSize:'20px', 
+                            marginRight:'5px',
+                            color:'red',
+                            }} className="uil uil-signout"></i> 
+                        <span
+                       onClick={async () => {
+                        const success = await signOut();
+                        if (success) {
+                          alert('You are sign out');
+                        }
+                      }}
+                         style={{
+                            textDecoration:'none', 
+                            color: 'red'}} 
+                            to=''
+                        >LOGOUT</span>
                         </li>
                         
                     </ul>
