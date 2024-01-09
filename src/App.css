@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 body{
     margin: 0;
     padding: 0;
@@ -99,5 +100,31 @@ body{
  
   .custom-file-input:active {
     outline: 0;
+  }
+
+  .dashboard_notifier{
+    display: none;
+  }
+
+  @media screen and (max-width: 900px) {
+    body{
+      margin: 0;
+      padding: 0;
+  }
+  
+    .view_dashboard{
+      display: none;
+    }
+    .dashboard_notifier{
+      display: block;
+      position: fixed;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Oswald", sans-serif;
+    }
   }
  

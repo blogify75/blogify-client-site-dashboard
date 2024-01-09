@@ -20,6 +20,17 @@ const AddProduct = () => {
 
         e.preventDefault();
 
+        let modifiedAffilietLink = '';
+
+        if(e.target.affiliateLink.value?.slice(0,8) === 'https://'){
+            modifiedAffilietLink = e.target.affiliateLink.value;
+        }else {
+            toast.error('link must have https://')
+            e.target.affiliateLink.value = '';
+        }
+
+        console.log(modifiedAffilietLink)
+
         const postData = {
             img:imgHolder,
             title: e.target.title.value,
@@ -27,14 +38,12 @@ const AddProduct = () => {
             description: description,
             email: 'demo@gmail.com',
             name: e.target.name.value,
-            affiliateLink:e.target.affiliateLink.value,
+            affiliateLink: modifiedAffilietLink,
             categories: category,
             date: `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`,
         };
         
-        console.log(postData)
-
-        
+ 
         if(imgHolder){  
                 if(description){
                     await fetchPostProductData(postData).then(res => {
