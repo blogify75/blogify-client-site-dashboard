@@ -5,7 +5,7 @@ import useProductData from '../../../customHooks/customProductHook';
 const DetailProduct = () => {
     const {id} = useParams();
 
-    const [productData, refetch, isLoading] = useProductData();
+    const [productData] = useProductData();
     const allProducts =productData?.data?.data?.data;
 
     const findProduct = allProducts?.find(f => {
