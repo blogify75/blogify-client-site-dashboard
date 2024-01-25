@@ -89,7 +89,7 @@ const Product = () => {
                         </div>
                         <div style={{ paddingLeft: "20px" }} className={`${product.allBlogs_detail}`}>
                           <div className={`${product.allBlogs_Detail_title} flex_between  `}>
-                            <p> {data?.title.length > 90 ? data?.title.slice(0,90) + "..." : data?.title}</p>
+                            <p title={data?.title}> {data?.title.length > 90 ? data?.title.slice(0,90) + "..." : data?.title}</p>
                             <div className={product.allBlogs_modifications} style={{marginRight:'30px'}}>
                               <span style={{cursor:'pointer'}} onClick={() => handleRoute(data?._id)}><i className="uil uil-pen"></i></span>
                               <span style={{cursor:'pointer', marginLeft:'10px'}}><i onClick={() => {

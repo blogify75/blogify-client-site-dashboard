@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import modal from './Modal.module.css';
 
 
@@ -15,7 +16,7 @@ const Modal = ({turn = false, btn, status="Are you sure to delete this item: ", 
                     <div className={`${modal.modal_detail} flex `}>
                         <div>
                             <h5>{status}:</h5>
-                            <p>{title}</p>
+                            <p title={title}>{title.length > 50 ? title.slice(0,50) + '...' : title}</p>
                         </div>
                     </div>
                     <div  className={`${modal.modalBottom} flex_end `}>
